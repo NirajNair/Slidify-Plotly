@@ -1,0 +1,35 @@
+---
+title       : Graph using Plotly    
+subtitle    : Week 3 assigment
+author      : Niraj Nair
+job         : 24 July, 2020
+framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
+highlighter : highlight.js  # {highlight.js, prettify, highlight}
+hitheme     : tomorrow      # 
+widgets     : [mathjax, quiz, bootstrap]            # {}
+mode        : selfcontained # {standalone, draft}
+knit        : slidify::knit2slides
+---
+
+Create a web page presentation using R Markdown that features a plot created with Plotly. Host your webpage on either GitHub Pages, RPubs, or NeoCities. Your webpage must contain the date that you created the document, and it must contain a plot created with Plotly. We would love to see you show off your creativity!
+
+---
+
+I have used 'mtcars' dataset to plot a graph using plotly.
+I have ploted mpg vs cyl in the 'mtcars' dataset to understand the change of mpg on different cylinder types.
+
+---
+
+```{r , echo=F, warning=FALSE}
+library(plotly)
+data("mtcars")
+mtcars$cyl <- factor(mtcars$cyl)
+p <- plot_ly(data = mtcars, type = 'box', x = mtcars$cyl, y = mtcars$mpg, color = mtcars$cyl)
+p <- p %>% layout(xaxis = list(title= 'Cylinders'), yaxis = list(title= 'Miles Per Gallon'))
+p
+htmlwidgets::saveWidget(as_widget(p), "wp.html")
+
+```
+
+
+
